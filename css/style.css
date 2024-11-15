@@ -1,0 +1,903 @@
+@import url('https://fonts.googleapis.com/css2?family=Chango&display=swap');
+
+:root {
+   --input-bg: #d9ae9b;  /* Color for the textboxes */
+   --text-color: #fefbf9;  /* Updated white text color */
+   --label-color: #fefbf9;  /* Updated color for labels */
+   --label-stroke: #5e2f15;  /* Stroke color for labels */
+   --border-color: #b48b79;  /* Border color for input boxes */
+}
+
+* {
+   font-family: 'Chango', sans-serif;  /* Apply Chango font to everything */
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   outline: none;
+   border: none;
+   text-decoration: none;
+}
+
+body {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   min-height: 100vh;
+   background: url('images/background.jpg') no-repeat center center fixed;
+   background-size: cover;
+}
+
+@keyframes popIn {
+   0% {
+      transform: scale(0.8);  /* Start slightly smaller */
+      opacity: 0;  /* Start with transparency */
+   }
+   100% {
+      transform: scale(1);  /* End at normal size */
+      opacity: 1;  /* End fully visible */
+   }
+}
+
+/* Apply the animation to the form container */
+.form-container {
+   width: 80%;  /* Percentage-based width for responsiveness */
+   max-width: 1400px;  /* Set a maximum width */
+   height: 725px;  /* Keep the height fixed */
+   background: url('images/win.png') no-repeat center center;  /* Background image */
+   background-size: auto;  /* Keep the image size fixed while adjusting the container */
+   display: flex;
+   justify-content: center;
+   align-items: center;  /* Center items vertically */
+   padding: 20px;
+   position: relative;
+   background-position: center;  /* Keep background image centered */
+   
+   /* Animation for pop effect */
+   animation: popIn 0.5s ease-out;  /* 0.5 seconds for the pop animation */
+}
+
+.form-container form {
+   width: 320px;  /* Form width inside the container */
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;  /* Center form content vertically */
+   align-items: center;  /* Center content horizontally */
+}
+
+.form-container form h3 {
+   margin-bottom: 80px;  /* Reduced margin by 15px to move the text up */
+   font-size: 26px;
+   color: #fff;  /* White title text */
+   text-align: center;
+   text-transform: uppercase;
+
+   /* Add stroke to "Login" text */
+   -webkit-text-stroke: 1px #e91e63;  /* Pink stroke */
+   text-shadow: 1px 0px 0 #e91e63;  /* Stroke-like shadow */
+}
+
+
+/* Labels for Username and Password with stroke */
+.form-container form label {
+   font-size: 20px;
+   color: var(--label-color);  /* White color for labels */
+   display: block;
+   margin-bottom: 8px;
+   text-transform: uppercase;
+   text-align: center;
+   position: relative;
+
+   /* Add text stroke */
+   -webkit-text-stroke: 1px var(--label-stroke);  /* 1px stroke in brown */
+   color: var(--label-color);  /* White text */
+   text-shadow: 2px 1px 0 var(--label-stroke);  /* Add stroke-like shadow */
+}
+
+/* Input boxes */
+.form-container form .box {
+   width: 100%;
+   border-radius: 20px;  /* Rounded corners to match the cartoon style */
+   padding: 12px 14px;
+   font-size: 18px;
+   color: var(--text-color);  /* White text inside input */
+   background-color: var(--input-bg);  /* Light pink background for inputs */
+   margin-bottom: 20px;  /* Increased margin between input fields */
+   text-align: center;
+   border: 2px solid var(--border-color);  /* Border color */
+}
+
+.form-container form .box::placeholder {
+   color: var(--text-color);  /* White placeholder text */
+}
+
+/* Submit Button */
+.form-container form .btn {
+   width: 100%;
+   padding: 12px 0;  /* Slightly bigger button */
+   background: none;  /* Remove any default background color */
+   background-image: url('images/button.png');  /* Button background image */
+   background-size: cover;  /* Ensure the image covers the button */
+   background-position: center;  /* Center the background image */
+   border: none;  /* Remove any border */
+   border-radius: 20px;
+   font-size: 18px;
+   cursor: pointer;
+   margin-top: 20px;  /* Reduced margin to move the button up by 10px */
+   color: #fff;  /* White text */
+   position: relative;
+   z-index: 1;
+   text-align: center;  /* Ensure the text is centered */
+}
+
+.form-container form .btn:hover {
+   background-color: transparent;  /* Ensure no background color on hover */
+   transform: scale(1.05);  /* Slightly increase size on hover for a pop effect */
+   transition: transform 0.3s ease;  /* Smooth transition for hover effect */
+}
+
+/* Link and small text under inputs */
+.form-container form p {
+   font-size: 14px;
+   color: #8c6954;
+   text-align: center;
+   margin-top: 0px; /* Spacing between the link and button */
+}
+
+.form-container form p a {
+   color: #e91e63;  /* Pink color for sign-up link */
+   text-decoration: underline;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 1024px) {
+   .form-container {
+      width: 90%;  /* Allow the container to be more fluid */
+      max-width: 1000px;  /* Adjust the max-width */
+      background-size: contain;  /* Ensure the image remains contained in smaller screens */
+   }
+}
+
+@media (max-width: 768px) {
+   .form-container {
+      width: 95%;  /* Increase width percentage for smaller screens */
+      height: auto;  /* Allow height to adjust for smaller screens */
+      max-width: 800px;  /* Set a smaller max-width */
+      background-size: contain;  /* Ensure the background image remains responsive */
+   }
+   
+   .form-container form {
+      width: 280px;  /* Adjust form size for smaller screens */
+   }
+
+   .form-container form h3 {
+      font-size: 24px;  /* Reduce the size of the title */
+   }
+   
+   .form-container form label, 
+   .form-container form .box {
+      font-size: 16px;  /* Adjust font size for inputs and labels */
+   }
+
+   .form-container form .btn {
+      padding: 10px 0;  /* Reduce button padding on smaller screens */
+   }
+}
+
+@media (max-width: 480px) {
+   .form-container {
+      width: 100%;  /* Full width on small screens */
+      height: auto;
+      background-size: contain;  /* Ensure background image stays contained */
+   }
+
+   .form-container form {
+      width: 260px;  /* Further reduce form size */
+   }
+
+   .form-container form h3 {
+      font-size: 22px;  /* Reduce the size of the title */
+   }
+   
+   .form-container form label, 
+   .form-container form .box {
+      font-size: 14px;  /* Adjust font size for inputs and labels */
+   }
+
+   .form-container form .btn {
+      padding: 8px 0;  /* Further reduce button padding */
+   }
+}
+
+/* Style for the profile container, background, and centering */
+.profile-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   background: url('images/login.png') no-repeat center center; /* Background same as login */
+   background-size: contain; /* Ensure the image fits properly */
+}
+
+/* Style for the profile box to look like the login box */
+.profile-box {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background: rgba(255, 255, 255, 0.8); /* Add a light overlay to stand out from the background */
+   padding: 50px;
+   border-radius: 20px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+   width: 320px;
+}
+
+/* Style for the profile picture */
+.profile-pic {
+   width: 150px;
+   height: 150px;
+   border-radius: 50%; /* Circular profile picture */
+   object-fit: cover;
+   border: 3px solid #e91e63; /* Optional: Add a border around the profile picture */
+   margin-bottom: 20px; /* Space below the picture */
+}
+
+/* Profile name styling */
+.profile-name {
+   font-size: 24px;
+   color: #333;
+   margin-bottom: 20px; /* Space below the name */
+   text-align: center;
+}
+
+/* Button styles */
+.btn {
+   width: 100%;
+   padding: 12px;
+   background: url('images/button.png'); /* Use the button background */
+   background-size: cover;
+   background-position: center;
+   border: none;
+   color: #fff;
+   text-align: center;
+   cursor: pointer;
+   margin-bottom: 10px; /* Space between buttons */
+   border-radius: 20px;
+   transition: transform 0.3s ease; /* Hover effect for button */
+}
+
+/* Hover effect for buttons */
+.btn:hover {
+   transform: scale(1.05);
+}
+
+/* Delete button (logout) styling */
+.delete-btn {
+   background-color: #e91e63; /* Red color for the logout button */
+   color: #fff;
+   border-radius: 20px;
+   padding: 12px;
+   text-decoration: none;
+   width: 100%;
+   text-align: center;
+   margin-bottom: 20px;
+   transition: transform 0.3s ease;
+}
+
+/* Hover effect for the delete button */
+.delete-btn:hover {
+   transform: scale(1.05);
+}
+
+/* Style for links in the paragraph */
+.profile-box p {
+   color: #333;
+   font-size: 14px;
+   text-align: center;
+   margin-top: 10px;
+}
+
+.profile-box p a {
+   color: #e91e63;
+   text-decoration: underline;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+   .profile-box {
+      width: 90%;
+      padding: 30px;
+   }
+
+   .profile-pic {
+      width: 120px;
+      height: 120px;
+   }
+}
+
+@media (max-width: 480px) {
+   .profile-box {
+      width: 95%;
+      padding: 20px;
+   }
+
+   .profile-pic {
+      width: 100px;
+      height: 100px;
+   }
+}
+/* Adding styles for the game layout */
+.game-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   min-height: 100vh;
+   background: url('/mnt/data/gamebananaback.jpg') no-repeat center center; /* Background image */
+   background-size: cover;
+   width: 70%;
+}
+.game-info {
+   display: flex;
+   justify-content: space-between; /* Space items apart */
+   align-items: center; /* Align vertically */
+   position: absolute; /* Fix to the top of the page */
+   top: -70px; /* Adjust distance from the top */
+   left: 10px; /* Add some padding from the left edge */
+   right: 10px; /* Add some padding from the right edge */
+   width: calc(100% - 20px); /* Account for left and right padding */
+   z-index: 1000; /* Ensure it stays above other elements */
+   
+}
+
+.score, .level, .timer {
+   font-size: 36px; /* Adjust font size for better visibility */
+   color: #fded29; /* Bright yellow color */
+   text-shadow: -1px -1px 0 #644400, 1px -1px 0 #644400, -1px 1px 0 #644400, 1px 1px 0 #644400; /* Dark brown stroke */
+   font-weight: bold;
+  
+   
+}
+
+.score {
+   text-align: left; /* Align text to the left */
+   margin-right: auto; /* Push to the left */
+}
+
+.level {
+   text-align: center; /* Center the level */
+   flex-grow: 1; /* Allow it to expand */
+}
+
+.timer {
+   text-align: right; /* Align text to the right */
+   margin-left: auto; /* Push to the right */
+}
+
+
+.puzzle-container {
+   margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+   .game-info {
+       top: 10px; /* Reduce distance from the top */
+       flex-direction: column; /* Stack elements vertically */
+       align-items: center; /* Center items */
+   }
+
+   .score, .timer, .level {
+       font-size: 28px; /* Reduce font size for smaller screens */
+       margin: 5px 0; /* Add spacing between elements */
+   }
+}
+
+.puzzle-image {
+   max-width: 800px;
+   height: auto;
+   border: 2px solid #fff;
+   border-radius: 10px;
+}
+
+.result-message {
+   font-size: 24px;
+   margin-top: 20px;
+   font-weight: bold;
+}
+/* Modal Popup Styles */
+.result-modal {
+   display: none; /* Hidden by default */
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+   border-radius: 15px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+   text-align: center;
+   padding: 30px 20px; /* Add padding for better spacing */
+   z-index: 1000; /* Ensure it stays above other elements */
+   width: 300px; /* Fixed width for the modal */
+   animation: popIn 0.3s ease-out; /* Add pop-in animation */
+}
+
+.result-modal p {
+   font-size: 20px;
+   margin: 20px 0;
+   color: #333; /* Dark text color */
+}
+
+.result-modal button {
+   padding: 10px 20px;
+   font-size: 16px;
+   background-color: #4caf50; /* Green background */
+   color: white;
+   border: none;
+   border-radius: 10px;
+   cursor: pointer;
+   transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.result-modal button:hover {
+   background-color: #45a049; /* Darker green on hover */
+   transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* Modal animation */
+@keyframes popIn {
+   0% {
+       transform: translate(-50%, -50%) scale(0.8); /* Smaller scale */
+       opacity: 0; /* Transparent */
+   }
+   100% {
+       transform: translate(-50%, -50%) scale(1); /* Full size */
+       opacity: 1; /* Fully visible */
+   }
+}
+
+/* Ensure the game layout styles remain unaffected */
+.game-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   min-height: 100vh;
+   background: url('/mnt/data/gamebananaback.jpg') no-repeat center center; /* Background image */
+   background-size: cover;
+}
+
+
+
+.puzzle-container {
+   margin-bottom: 40px;
+}
+
+.puzzle-image {
+   max-width: 800px;
+   height: auto;
+   border: 2px solid #fff;
+   border-radius: 10px;
+}
+.answer-buttons {
+   display: flex;
+   justify-content: center;
+   gap: 10px;
+   margin-top: 70px;
+   width: 70%; /* Ensure it takes 70% of the page width */
+   position: relative;
+   z-index: 1000; /* Higher z-index to ensure it is above other elements */
+}
+
+.answer-btn {
+   flex: 1; /* Make buttons evenly sized */
+   padding: 15px 20px; /* Larger padding for better visibility */
+   font-size: 24px; /* Larger font size for number buttons */
+   border-radius: 15px; /* Rounded corners */
+   border: none;
+   background-color: #4caf50; /* Green background */
+   color: white; /* White text */
+   cursor: pointer;
+   text-align: center;
+   transition: transform 0.2s ease, background-color 0.2s ease;
+   z-index: 1001; /* Ensure individual buttons are above any overlays */
+}
+
+.answer-btn:hover {
+   transform: scale(1.1); /* Slight zoom on hover */
+   background-color: #45a049; /* Darker green on hover */
+}
+
+/* Ensure other overlapping elements do not block the buttons */
+.puzzle-container, .puzzle-image, .game-info {
+   position: relative;
+   z-index: 900; /* Lower z-index than the answer buttons */
+}
+
+.result-modal, .popup-container, .icons-container {
+   z-index: 1100; /* Keep popups above buttons when visible */
+}
+
+/* Additional fixes for responsive styles */
+@media (max-width: 768px) {
+   .answer-buttons {
+      flex-wrap: wrap; /* Allow buttons to wrap for smaller screens */
+      gap: 8px; /* Smaller gap between buttons */
+   }
+
+   .answer-btn {
+      font-size: 20px; /* Adjust font size for smaller screens */
+      padding: 12px 16px; /* Adjust padding */
+   }
+}
+
+@media (max-width: 480px) {
+   .answer-btn {
+      font-size: 18px; /* Smaller font for very small screens */
+      padding: 10px 12px; /* Adjust padding further */
+   }
+}
+/* Popup container for correct/incorrect messages */
+.popup-container {
+   display: none; /* Hidden by default */
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 1000; /* Ensure it appears above other elements */
+}
+
+
+.popup-btn:hover {
+   transform: scale(1.1);
+}
+
+
+/* Popup overlay - adjust for full size */
+.popup-overlay {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
+   z-index: 1000;
+}
+
+/* Popup box with a larger background image and no shadow */
+.popup-box {
+   width: 90%; /* Increase width for larger overlay */
+   max-width: 1000px; /* Adjust max size */
+   height: 800px; /* Increase height */
+   background: url('images/login.png') no-repeat center center; /* Use your image */
+   background-size: cover; /* Stretch the image to cover the box */
+   border-radius: 20px; /* Optional rounded corners */
+   position: relative; /* Enable absolute positioning for child elements */
+   display: flex;
+   flex-direction: column;
+   justify-content: center; /* Keep content centered vertically */
+   align-items: center; /* Center content horizontally */
+   padding: 0; /* Remove internal padding */
+   z-index: 1010;
+   box-shadow: none; /* Remove shadow completely */
+   border: none; /* Remove border if any */
+}
+
+/* Title stays in the pink area */
+.popup-box h3 {
+   position: absolute;
+   top: 185px; /* Adjust to fit the pink section */
+   left: 50%;
+   transform: translateX(-50%);
+   font-size: 24px;
+   color: #fff;
+   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Ensure readability */
+   text-transform: uppercase;
+   z-index: 1020;
+}
+
+/* Popup button with background image and text */
+.popup-btn {
+   position: absolute;
+   bottom: 140px; /* Adjust to place it above the popup box */
+   width: 300px; /* Button width */
+   height: 150px; /* Button height */
+   padding: 0; /* Remove any extra space around the button */
+   font-size: 24px; /* Font size for the text */
+   font-weight: bold;
+   color: #ffffff; /* Set text color explicitly to white */
+   text-align: center; /* Center the text horizontally */
+   line-height: 150px; /* Center the text vertically */
+   background: url('images/button_image.png') no-repeat center center; /* Background image */
+   background-size: contain; /* Ensure the image scales properly */
+   border: none; /* Remove any default border */
+   border-radius: 10px; /* Optional rounded corners */
+   cursor: pointer; /* Make it look clickable */
+   transition: transform 0.3s ease, background-color 0.3s ease;
+   z-index: 1020; /* Ensure it is above other elements */
+
+   /* Add text stroke for the desired effect */
+   -webkit-text-stroke: 1px rgb(0, 151, 0); /* Dark green stroke */
+}
+
+/* Button hover effect */
+.popup-btn:hover {
+   transform: scale(1.1); /* Slight zoom effect on hover */
+   background-color: transparent; /* Keep background transparent */
+}
+
+/* Correct answer text inside the popup */
+.correct-answer {
+   position: absolute;
+   bottom: 450px;
+   color: #ffffff; /* White text */
+   font-size: 18px;
+   margin-top: 10px;
+   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Subtle shadow for readability */
+   text-align: center;
+}
+
+/* Icons container (top-right corner) */
+.icons-container {
+   position: absolute;
+   top: 40px;
+   right: 40px;
+   display: flex;
+   flex-direction: column; /* Stack the icons vertically */
+   align-items: center; /* Center the icons horizontally within the container */
+   gap: 20px; /* Add space between the icons */
+   z-index: 2000; /* Ensure the icons appear above other elements */
+}
+
+/* Individual icons */
+.icon {
+   width: 90px;
+   height: 90px;
+   cursor: pointer; /* Make icons clickable */
+   transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.icon:hover {
+   transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Mute Icon Specific Styles */
+#mute-icon {
+   width: 90px; /* Match the size of other icons */
+   height: 90px; /* Match the size of other icons */
+   cursor: pointer; /* Ensure it looks clickable */
+   transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+#mute-icon:hover {
+   transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Info Popup Specific Styles */
+.info-text {
+   font-size: 15px;
+   color: #5e2f15; /* Brown text color */
+   text-align: center;
+   position: absolute;
+   top: 290px;
+   line-height: 1.6; /* Add spacing between lines for readability */
+   padding: 0 0px; /* Add horizontal padding for better spacing */
+   
+}
+
+.info-image {
+   width: 150px;
+   height: auto;
+   position: absolute;
+   top: 410px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+   .popup-box {
+      width: 95%;
+      height: auto;
+      padding: 20px;
+   }
+
+   .popup-btn {
+      width: 250px; /* Adjust button width for smaller screens */
+      height: 100px; /* Adjust button height for smaller screens */
+      line-height: 100px; /* Center text vertically */
+      font-size: 20px; /* Reduce font size */
+   }
+
+   .info-text {
+      font-size: 20px; /* Adjust font size for readability */
+   }
+
+   .info-image {
+      width: 120px; /* Adjust image size for smaller screens */
+   }
+}
+
+@media (max-width: 480px) {
+   .popup-btn {
+      width: 200px;
+      height: 80px;
+      line-height: 80px;
+      font-size: 18px;
+   }
+
+   .info-text {
+      font-size: 16px;
+   }
+
+   .info-image {
+      width: 100px;
+   }
+}
+
+/* Rabbit Characters */
+.rabbits-container {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   z-index: 100;
+}
+
+.rabbit {
+   width: 500px;
+   height: auto;
+}
+#left-rabbit {
+   margin-left: 100px; /* Adjust to position the left rabbit */
+}
+
+#right-rabbit {
+   margin-right: 100px; /* Adjust to position the right rabbit */
+}
+
+
+
+/* Profile Picture Styling */
+.settings-profile-pic {
+   width: 120px; /* Adjust the size to make it smaller */
+   height: 120px; /* Ensure the height matches the width for a perfect circle */
+   border-radius: 50%; /* Make the image circular */
+   object-fit: cover; /* Ensure the image scales proportionally within the circle */
+   border: 3px solid #e91e63; /* Optional: Add a border around the picture */
+   margin: 10px auto; /* Center the image and add spacing */
+   display: block; /* Center within the popup */
+}
+
+/* Profile Name Styling */
+.settings-profile-name {
+   font-size: 18px; /* Adjust the font size */
+   text-align: center; /* Center the name below the picture */
+   color: #333; /* Set a neutral color for the name */
+   margin: 10px 0; /* Add spacing between the picture and name */
+}
+
+/* Logout Button Styling */
+.settings-logout-btn {
+   display: block; /* Make it behave like a block element */
+   width: 20%; /* Adjust the button width */
+   margin: 10px auto; /* Center the button and add spacing */
+   padding: 10px 0; /* Adjust the padding for better sizing */
+   text-align: center; /* Center the text inside the button */
+   background-color: #e91e63; /* Red background color */
+   color: white; /* White text color */
+   border-radius: 20px; /* Rounded corners */
+   font-size: 16px; /* Adjust the font size */
+   text-decoration: none; /* Remove underline from the link */
+   cursor: pointer; /* Show a pointer cursor */
+   transition: transform 0.2s ease, background-color 0.2s ease; /* Smooth hover effect */
+}
+/* Hover Effect for Logout Button */
+.settings-logout-btn:hover {
+   background-color: #d01752; /* Darker red on hover */
+   transform: scale(1.05); /* Slight zoom effect */
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+   #settings-popup-box {
+       width: 90%;
+   }
+   .settings-profile-pic {
+       width: 120px;
+       height: 120px;
+   }
+   .settings-logout-btn {
+       font-size: 16px;
+       padding: 8px 16px;
+   }
+}
+.update-form-container {
+   width: 70%;
+   margin: 0 auto;
+   background: url('images/background.jpg') no-repeat center center;
+   background-size: contain;
+   padding: 20px;
+   border-radius: 20px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   text-align: center;
+   
+}
+
+.update-profile-form {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
+
+.update-profile-row {
+   display: flex;
+   justify-content: space-between;
+   gap: 20px;
+   flex-wrap: wrap;
+}
+
+.update-input-group {
+   flex: 1;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   gap: 10px;
+}
+
+.update-input-group label {
+   font-size: 18px;
+   color: #fff;
+   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.update-input-group input {
+   width: 100%;
+   padding: 10px;
+   border-radius: 10px;
+   border: 2px solid #e91e63;
+   font-size: 16px;
+   color: #333;
+}
+
+.update-profile-buttons {
+   display: flex;
+   justify-content: center;
+   gap: 20px;
+}
+
+.update-btn, .update-back-btn {
+   padding: 10px 20px;
+   border-radius: 10px;
+   background-color: #e91e63;
+   color: #fff;
+   text-decoration: none;
+   cursor: pointer;
+   font-size: 16px;
+   text-align: center;
+   margin-top: 30px;
+}
+
+.update-btn:hover, .update-back-btn:hover {
+   transform: scale(1.05);
+   transition: all 0.3s ease;
+}
+
+.update-profile-pic {
+   width: 120px;
+   height: 120px;
+   border-radius: 50%;
+   object-fit: cover;
+   border: 3px solid #e91e63;
+   margin: 0 auto;
+   margin-left: 380px;
+   margin-top: 30px;
+}
