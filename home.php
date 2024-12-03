@@ -1,6 +1,7 @@
 <?php
 
 include 'config.php';
+include 'footer.php';
 session_start();
 $user_id = $_SESSION['user_id'];
 
@@ -13,34 +14,60 @@ if(isset($_GET['logout'])){
    session_destroy();
    header('location:login.php');
 }
+$starsQuery = "SELECT level, stars FROM player_stats WHERE user_id = '$user_id'";
+$starsResult = mysqli_query($conn, $starsQuery);
 
+$starsData = [];
+while ($row = mysqli_fetch_assoc($starsResult)) {
+    $starsData[$row['level']] = $row['stars'];
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Settings</title> <!-- Added title -->
+   <title>Settings</title> 
 
-   <!-- Custom CSS file link -->
+   
    <link rel="stylesheet" href="css/style.css">
-   <script src="js/script.js" defer></script>
+   <link rel="stylesheet" href="css/levelsStyle.css">
+
    <script src="js/settingsInfoMute.js" defer></script>
+   <script src="js/levels.js" defer></script>
 </head>
 <body>
 <div class="game-container">
-    <!-- Top-right corner icons -->
+<a href="leaderboard.php" class="leaderboard-btn">Leaderboard</a>
+
+    
     <div class="icons-container">
         <img src="images/settings.png" id="settings-icon" alt="Settings Icon" class="icon">
         <img src="images/info.png" id="info-icon" alt="Info Icon" class="icon">
-        <img id="mute-icon" class="icon" src="images/mute_icon.png" alt="Mute Icon">
+        
     </div>
-<div class="profile-container">
+
+    <div class="level-buttons-container">
+    <?php for ($i = 1; $i <= 10; $i++): ?>
+        <div class="level-button-wrapper">
+        <?php if (isset($starsData[$i])): ?>
+                <div class="stars">
+                    <?php for ($j = 0; $j < $starsData[$i]; $j++): ?>
+                        <img src="images/star.png" alt="Star">
+                    <?php endfor; ?>
+                </div>
+            <?php endif; ?>
+            <button class="level-btn" data-level="<?php echo $i; ?>"><?php echo $i; ?></button>
+            
+        </div>
+    <?php endfor; ?>
+</div>
+
+<!--<div class="profile-container">
    <div class="profile-box">
-      <!-- Settings Title -->
-      <h2 class="page-title">Settings</h2> <!-- Added the title -->
+      
+      <h2 class="page-title">Settings</h2>
 
       <?php
          $select = mysqli_query($conn, "SELECT * FROM `user_form` WHERE id = '$user_id'") or die('query failed');
@@ -58,7 +85,7 @@ if(isset($_GET['logout'])){
       <a href="home.php?logout=<?php echo $user_id; ?>" class="delete-btn">Logout</a>
       
    </div>
-</div>
+</div>-->
       </div>
       <div class="popup-overlay" id="settings-popup-overlay">
     <div class="popup-box" id="settings-popup-box">

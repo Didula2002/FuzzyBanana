@@ -37,6 +37,14 @@ body {
       opacity: 1;  /* End fully visible */
    }
 }
+.google-btn {
+   display: inline-block;
+   margin-top: 15px;
+}
+
+.google-btn img {
+   width: 200px;
+}
 
 /* Apply the animation to the form container */
 .form-container {
@@ -337,6 +345,23 @@ body {
    background-size: cover;
    width: 70%;
 }
+.game-container a{
+   width: 15%;
+   padding: 12px 0;  /* Slightly bigger button */
+   background-color: #1cca25;
+   background-image: url('images/button.png');  /* Button background image */
+   background-size: cover;  /* Ensure the image covers the button */
+   background-position: center;  /* Center the background image */
+   border: none;  /* Remove any border */
+   border-radius: 20px;
+   font-size: 18px;
+   cursor: pointer;
+   margin-top: 130px;  /* Reduced margin to move the button up by 10px */
+   color: #fff;  /* White text */
+   position: relative;
+   z-index: 1;
+   text-align: center;  /* Ensure the text is centered */
+}
 .game-info {
    display: flex;
    justify-content: space-between; /* Space items apart */
@@ -480,7 +505,7 @@ body {
 .answer-buttons {
    display: flex;
    justify-content: center;
-   gap: 10px;
+   gap: 20px;
    margin-top: 70px;
    width: 70%; /* Ensure it takes 70% of the page width */
    position: relative;
@@ -497,14 +522,18 @@ body {
    color: white; /* White text */
    cursor: pointer;
    text-align: center;
-   transition: transform 0.2s ease, background-color 0.2s ease;
+   transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
    z-index: 1001; /* Ensure individual buttons are above any overlays */
+   box-shadow: 0 0 0 4px white; /* Add a white stroke around the button */
 }
 
+/* Add hover effect to make the stroke more pronounced */
 .answer-btn:hover {
-   transform: scale(1.1); /* Slight zoom on hover */
-   background-color: #45a049; /* Darker green on hover */
+   transform: scale(1.05); /* Slight zoom effect on hover */
+   background-color: #45a049; /* Darker green background */
+   box-shadow: 0 0 0 6px white; /* Thicker white stroke on hover */
 }
+
 
 /* Ensure other overlapping elements do not block the buttons */
 .puzzle-container, .puzzle-image, .game-info {
@@ -827,7 +856,7 @@ body {
    background-size: contain;
    padding: 20px;
    border-radius: 20px;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
    text-align: center;
    
 }
@@ -837,7 +866,17 @@ body {
    flex-direction: column;
    gap: 20px;
 }
+.update-profile-form h3{
+   margin-bottom: 90px;  /* Reduced margin by 15px to move the text up */
+   font-size: 26px;
+   color: #fff;  /* White title text */
+   text-align: center;
+   text-transform: uppercase;
 
+   /* Add stroke to "Login" text */
+   -webkit-text-stroke: 1px #e91e63;  /* Pink stroke */
+   text-shadow: 1px 0px 0 #e91e63;  /* Stroke-like shadow */
+}
 .update-profile-row {
    display: flex;
    justify-content: space-between;
@@ -861,29 +900,33 @@ body {
 
 .update-input-group input {
    width: 100%;
-   padding: 10px;
-   border-radius: 10px;
-   border: 2px solid #e91e63;
-   font-size: 16px;
-   color: #333;
+   border-radius: 20px;  /* Rounded corners to match the cartoon style */
+   padding: 12px 14px;
+   font-size: 18px;
+   color: var(--text-color);  /* White text inside input */
+   background-color: var(--input-bg);  /* Light pink background for inputs */
+   margin-bottom: 20px;  /* Increased margin between input fields */
+   text-align: center;
+   border: 2px solid var(--border-color);  /* Border color */
 }
 
 .update-profile-buttons {
-   display: flex;
+   
    justify-content: center;
-   gap: 20px;
+   gap: 40px;
+   margin-top: 50px;
 }
 
 .update-btn, .update-back-btn {
    padding: 10px 20px;
    border-radius: 10px;
-   background-color: #e91e63;
+   background-color: #1cca25;
    color: #fff;
    text-decoration: none;
    cursor: pointer;
-   font-size: 16px;
+   font-size: 18px;
    text-align: center;
-   margin-top: 30px;
+   
 }
 
 .update-btn:hover, .update-back-btn:hover {
@@ -900,4 +943,33 @@ body {
    margin: 0 auto;
    margin-left: 380px;
    margin-top: 30px;
+}
+/* Styling for the spinner inside the puzzle box */
+.spinner-container {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 100;
+   display: none; /* Initially hidden */
+}
+
+.spinner {
+   border: 4px solid rgba(255, 255, 255, 0.3);
+   border-top: 4px solid #fff;
+   border-radius: 50%;
+   width: 50px;
+   height: 50px;
+   animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+   0% { transform: rotate(0deg); }
+   100% { transform: rotate(360deg); }
+}
+
+/* Blur effect for the puzzle box */
+.puzzle-container.loading {
+   filter: blur(4px);
+   pointer-events: none; /* Prevent interaction while loading */
 }

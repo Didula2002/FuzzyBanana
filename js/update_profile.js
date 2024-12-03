@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
-    
+
     const body = document.body;
-    body.style.backgroundImage = "url('images/background.jpg')";
+    body.style.backgroundImage = "url('images/update_profile_back.jpg')";
     body.style.backgroundSize = "cover";
     body.style.backgroundPosition = "center";
     body.style.backgroundRepeat = "no-repeat";
@@ -10,11 +10,12 @@ document.addEventListener('DOMContentLoaded', function () {
     body.style.justifyContent = "center";
     body.style.alignItems = "center";
 
+
     const formContainer = document.querySelector('.form-container');
 
- 
+
     if (window.location.pathname.includes('register.php')) {
-       
+        
         formContainer.style.backgroundImage = "url('images/signin.png')";
         formContainer.style.width = "90%";
         formContainer.style.maxWidth = "1600px";
@@ -53,11 +54,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
     } else if (window.location.pathname.includes('home.php')) {
-       
+        
         formContainer.style.backgroundImage = "url('images/login.png')";
         body.style.backgroundSize = "cover"; 
-        body.style.backgroundPosition = "center";
-        body.style.backgroundRepeat = "no-repeat"; 
+        body.style.backgroundPosition = "center"; 
+        body.style.backgroundRepeat = "no-repeat";
 
         
         const profileBox = document.querySelector('.profile-box');

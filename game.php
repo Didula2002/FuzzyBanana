@@ -1,6 +1,7 @@
 <?php
 
 include 'config.php';
+include 'footer.php';
 session_start();
 $user_id = $_SESSION['user_id'];
 
@@ -13,8 +14,11 @@ if (isset($_GET['logout'])) {
     session_destroy();
     header('location:login.php');
 }
+$level = isset($_GET['level']) ? intval($_GET['level']) : 1;
+$timer = 30 - ($level - 1) * 2; // Calculate timer based on level
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +28,12 @@ if (isset($_GET['logout'])) {
     <title>Banana Puzzle Game</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/gameScript.js" defer></script>
-    <script src="js/script.js" defer></script>
+    
+    <script>
+        const currentLevel = <?php echo $level; ?>;
+        const initialTime = <?php echo $timer; ?>;
+        const currentUserId = <?php echo $user_id; ?>;
+    </script>
 </head>
 <body>
 
@@ -39,7 +48,7 @@ if (isset($_GET['logout'])) {
     <!-- Game Info -->
     <div class="game-info">
         <div class="score">Score: <span id="score">0</span></div>
-        <div class="level">Level: <span id="level">1</span></div>
+        <div class="level">Level: <span id="level"><?php echo $level; ?></span></div>
         <div class="timer">Time: <span id="time">30</span></div>
     </div>
 
@@ -48,10 +57,15 @@ if (isset($_GET['logout'])) {
         <img src="images/search.gif" alt="Blue Rabbit" class="rabbit" id="left-rabbit">
         <img src="images/jump.gif" alt="Pink Rabbit" class="rabbit" id="right-rabbit">
     </div>
-
+    
     <!-- Puzzle Container -->
-    <div class="puzzle-container">
+    <div class="puzzle-container" id="puzzle-container">
         <img id="puzzle-image" src="" alt="Puzzle" class="puzzle-image">
+        
+        <!-- Loading Spinner Inside Puzzle Box -->
+        <div id="loading" class="spinner-container" style="display: none;">
+            <div class="spinner"></div>
+        </div>
     </div>
 
     <!-- Answer Buttons -->

@@ -1,0 +1,92 @@
+/* General Body Styling */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    height: 8750px; /* Match body height to the map height */
+    scroll-behavior: smooth; /* Smooth scrolling for better UX */
+    background-color: #000; /* Fallback background color */
+}
+
+/* Game Container */
+.game-container {
+    position: relative;
+    width: 100%; /* Full width of the container */
+    height: 8750px; /* Match height to the map image */
+    background-color: #000; /* Fallback color */
+    background-image: url('images/map.png'); /* Map image as background */
+    background-size: contain; /* Fit the map image within the width */
+    background-repeat: no-repeat; /* Avoid repeating the map */
+    background-position: top center; /* Center the map horizontally */
+}
+
+
+/* Level Buttons Container */
+.level-buttons-container {
+    position: relative;
+    width: 100%; /* Full width of container */
+    height: 100%; /* Match container height to game-container */
+}
+
+/* Level Button Wrapper */
+.level-button-wrapper {
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+/* Level Buttons */
+.level-btn {
+    background: url('images/levelbutton.png') no-repeat center center; /* Circular button image */
+    background-size: contain; /* Ensure the image scales properly */
+    width: 100px; /* Set button width */
+    height: 100px; /* Set button height */
+    border: none; /* Remove border */
+    border-radius: 50%; /* Make it circular */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effect for Buttons */
+.level-btn:hover {
+    transform: scale(1.1); /* Slightly enlarge the button on hover */
+}
+
+/* Stars Above the Buttons in Arc Shape */
+.stars {
+    position: absolute;
+    top: -70px; /* Stars positioned above the buttons */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    width: 170px; /* Width for the arc */
+    height: 170px; /* Height for the arc */
+    pointer-events: none; /* Disable interaction with stars */
+}
+
+/* Individual Star Styling */
+.stars img {
+    position: absolute;
+    width: 80px; /* Star width */
+    height: 80px; /* Star height */
+}
+
+/* Arc Positions for Three Stars */
+.stars img:nth-child(1) {
+    top: 0; /* Top of the arc */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.stars img:nth-child(2) {
+    top: 50%; /* Left side of the arc */
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+.stars img:nth-child(3) {
+    top: 50%; /* Right side of the arc */
+    right: 0;
+    transform: translate(50%, -50%);
+}

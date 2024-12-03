@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Chango&display=swap');
+:root {
+    --input-bg: #d9ae9b;  /* Color for the textboxes */
+    --text-color: #fefbf9;  /* Updated white text color */
+    --label-color: #fefbf9;  /* Updated color for labels */
+    --label-stroke: #5e2f15;  /* Stroke color for labels */
+    --border-color: #b48b79;  /* Border color for input boxes */
+ }
+ 
+ * {
+    font-family: 'Chango', sans-serif;  /* Apply Chango font to everything */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+ }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.leaderboard-container {
+    width: 50%;
+    max-width: 1200px;
+    background: #ffffff00;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 380px;
+}
+
+.leaderboard-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+    margin-bottom: 160px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-container input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.search-container button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background-color: #0056b3;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.leaderboard-table th {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+}
+
+.leaderboard-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.leaderboard-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.leaderboard-table td {
+    text-align: center;
+}
